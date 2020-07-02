@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- Customize layout  -->
+		<template id="total_extend" inherit_id="website_sale.total" name="Extend Total">
+
+    		<!-- Replace elements  -->
+			<xpath expr="//div[@id='cart_total']" position="replace">
+				<div id="cart_total" t-if="website_sale_order">
+
+				        <div class="row" id="order_delivery" t-if="website_sale_order and website_sale_order.has_delivery">
+			                  <span class="col-xs-6 text-right text-muted" title="Delivery will be updated after choosing a new delivery method"> Delivery:</span>
+			                  <span class="col-xs-6 text-left text-muted">
+			                      <span t-field="website_sale_order.amount_delivery" style="white-space: nowrap;" t-field-options="{                               &quot;widget&quot;: &quot;monetary&quot;,                               &quot;display_currency&quot;: &quot;website_sale_order.currency_id&quot;                           }"/>
+			                  </span>
+		            	</div>
+		            	
+				        <div class="row" id="order_total">
+				              <span class="col-xs-6 text-right h4">Total:</span>
+				              <span class="col-xs-6 text-left h4" style="white-space: nowrap;">
+				                  <span t-field="website_sale_order.amount_total" style="white-space: nowrap;" t-field-options="{                           &quot;widget&quot;: &quot;monetary&quot;,                           &quot;from_currency&quot;: &quot;website_sale_order.pricelist_id.currency_id&quot;,                           &quot;display_currency&quot;: &quot;website.currency_id&quot;                       }"/>
+				              </span>
+				        </div>
+				  </div>
+
+			</xpath>
+		</template>
+	</data>
+</openerp>

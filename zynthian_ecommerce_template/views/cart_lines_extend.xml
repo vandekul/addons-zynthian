@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<data>
+	<template id="cart_lines_extend" inherit_id="website_sale.cart_lines" name="Cart Lines Extend">
+	<xpath expr="//div[@class='text-muted']" position="replace">
+	</xpath>
+	</template>
+</data>

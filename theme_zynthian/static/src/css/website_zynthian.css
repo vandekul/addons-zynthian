@@ -1,0 +1,335 @@
+@charset "UTF-8";
+/*
+###########################################################
+FONT-FACE DECLARATIONS
+###########################################################
+*/
+@font-face {
+  font-family: 'Lato Light';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: fallback;
+  src: url("./fonts/lato/Lato-Light.ttf") format("ttf"),
+       url("./fonts/lato/Lato-Light.woff2") format("woff2"),
+       url("./fonts/lato/Lato-Light.woff") format("woff");
+}
+@font-face {
+  font-family: 'Lato Regular';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url("./fonts/lato/Lato-Regular.ttf") format("ttf"),
+       url("./fonts/lato/Lato-Regular.woff2") format("woff2"),
+       url("./fonts/lato/Lato-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: 'Lato Italic';
+  font-style:  italic;
+  font-weight: 400;
+  font-display: fallback;
+  src: url("./fonts/lato/Lato-Italic.ttf") format("ttf"),
+       url("./fonts/lato/Lato-Italic.woff2") format("woff2"),
+       url("./fonts/lato/Lato-Italic.woff") format("woff");
+}
+@font-face {
+  font-family: 'Lato Bold';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url("./fonts/lato/Lato-Bold.ttf") format("ttf"),
+       url("./fonts/lato/Lato-Bold.woff2") format("woff2"),
+       url("./fonts/lato/Lato-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Lato Black';
+  font-style:  normal;
+  font-weight: 900;
+  font-display: fallback;
+  src: url("./fonts/lato/Lato-Black.ttf") format("ttf"),
+       url("./fonts/lato/Lato-Black.woff2") format("woff2"),
+       url("./fonts/lato/Lato-Black.woff") format("woff");
+}
+@font-face {
+  font-family: 'Audiowide';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url("./fonts/audiowide/Audiowide-Regular.ttf") format("ttf"),
+       url("./fonts/audiowide/Audiowide-Regular.woff2") format("woff2"),
+       url("./fonts/audiowide/Audiowide-Regular.woff") format("woff");
+}
+/*
+###########################################################
+MINIMUM FONT PROPERTIES
+###########################################################
+*/
+html{
+  --font-light: 'Lato Light', sans-serif;
+  --font-base: 'Lato Regular', sans-serif;
+  --font-base-italic: 'Lato Italic', sans-serif;
+  --font-base-bold: 'Lato Bold', sans-serif;
+  --font-alt: 'Lato Black', sans-serif;
+  --font-special: 'Audiowide', sans-serif;
+}
+###########################################################
+
+.navbar.navbar-static-top {
+  margin-bottom: 0;
+  background-color: #000000;
+}
+.navbar-nav > li > a {
+  color: #ffffff !important;
+}
+.navbar-nav > li.active > a {
+  background-color: #000000 !important;
+  color: #ff0120 !important;
+}
+.navbar-nav > li > a:hover {
+  color: #ff0120 !important;
+}
+
+  
+ul.nav-stacked > li > a {
+  padding: 2px 15px;
+  color: #ffffff;
+}
+
+
+/*CSS CUSTOMIZE NEW STYLE ZYNTHIAN*/
+html{
+  font-size: 15px;
+}
+body{
+  font-family: 'Lato', sans-serif;
+  color:#000000;
+  font-size: 15px;
+}
+p{
+  font-size: 15px;
+}
+h2, h3, h4{
+  padding-bottom: 0.5em;
+}
+a{
+  color: #555555;
+}
+a:hover, a:focus {
+    color: #C00127;
+    text-decoration: underline;
+}
+
+.zynthian_alert_message {
+  display: none;
+}
+
+.navbar.navbar-static-top {
+  background-color: #000000;
+}
+.navbar.navbar-static-top {
+  background-color: #000000;
+}
+.navbar > .container .navbar-brand > img {
+  padding-top: 6px;
+  max-height: 58px;
+}
+@media only screen and (max-width: 768px) {
+  .navbar-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  } 
+  .navbar > .container .navbar-brand > img {
+    padding-top: 2px;
+    padding-bottom: 6px;
+  }
+}
+.navbar-default .navbar-nav > li > a {
+  padding-top: 21px;
+  padding-bottom: 21px;
+  color: #FFFFFF;
+   -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+      -ms-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > li:first-child > a {
+  color: #FFFFFF !important;
+  background-color: #C00127 !important;
+}
+h1 {
+  font-family: "Audiowide";
+  /*font-size: 210%;*/
+}
+h2 {
+  font-family: "Audiowide";
+}
+form.js_attributes {
+  display: none;
+}
+.btn{
+    border-radius: 6px;
+    -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+      -ms-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+.btn-lg,
+.btn-group-lg > .btn {
+  padding: 0.5em 1.5em;
+  border:1px solid #FFFFFF;
+  color:#FFFFFF;
+  background: transparent;
+  font-size: 17px;
+  line-height: 1.1;
+  border-radius: 6px !important;
+  margin-top: 1.25rem !important;
+}
+.btn-primary{
+  border:1px solid #000000;
+  color:#FFFFFF;
+  background: #000000;
+}
+.btn-info{
+  border:1px solid #000000;
+  color:#000000;
+  background: #FFFFFF;
+}
+.btn-link{
+  font-size: 1rem;
+  border:1px solid #000000;
+  color:#000000;
+  background: #FFFFFF;
+  padding: 0.5em 1.188em;
+}
+.btn-link:hover,
+.btn-primary:hover,
+.btn-info:hover,
+.btn-link:focus,
+.btn-primary:focus,
+.btn-info:focus {
+  border:1px solid #C00127;
+  color:#FFFFFF !important;
+  background: #C00127;
+  text-decoration: none;
+}
+.btn + .btn{
+  margin-left: 1rem;
+}
+.js_product{
+  padding-top: 1rem;
+}
+.js_product li{
+  padding-bottom: 0.5rem;
+}
+.js_product .oe_price_h4{
+  font-size: 32px;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+#product_detail > .row{
+  padding-bottom: 1rem;
+}
+#product_detail .oe_search,
+#product_detail .oe_search_button {
+  display: none;
+}
+.label-primary {
+    background-color: #C00127;
+}
+.text-primary {
+    color: #000000;
+}
+ul.wizard li {
+  border: 1px solid #AAAAAA;
+}
+ul.wizard li.text-primary .chevron::before {
+    border-left: 10px solid #EDEDED !important;
+}
+ul.wizard li.text-primary {
+    background: #EDEDED !important;
+}
+#cart_products div a,
+.js_cart_lines a{
+  color: #000000;
+}
+#cart_products div a:hover,
+.js_cart_lines a:hover{
+  color: #C00127;
+}
+.text-muted {
+  color: #555555;
+}
+#wrapwrap > footer{
+  background-color: #000000;
+  margin-top: 3rem;
+  display: block;
+}
+.form-control:focus {
+    border-color: rgba(192, 1, 39, 0.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(192, 1, 39, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(192, 1, 39, 0.6);
+}
+.nav-pills.nav-stacked > li > a{
+  background: #EDEDED;
+  color: #000000;
+}
+.nav-pills.nav-stacked > li > a:hover,
+.nav-pills.nav-stacked > li.active > a{
+  background: #000000;
+  color: #FFFFFF;
+}
+.pagination{
+  margin-top: 30px;
+}
+.pagination > li > a,
+.pagination > li > span {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover, .pagination > li > a:focus,
+.pagination > li > span:focus {
+  color: #000000;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  color: #FFFFFF;
+  background-color: #000000;
+  border-color: #000000;
+}
+.product_price .a-submit{
+  margin-left:6px;
+}
+.alert-info {
+  background-color: #EDEDED;
+  border-color: #aaa;
+  color: #000;
+}
+footer #footer{
+  display: none;
+}
+footer .container.mt16.mb8{
+  padding-top: 1.5em;
+  padding-bottom: 1.5rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  color: #FFFFFF !important;
+}
+footer .container.mt16.mb8 .text-muted{
+  color: #FFFFFF !important;
+}
+footer .container.mt16.mb8 a{
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+footer .container.mt16.mb8 a:hover{
+  color: #C00127;
+  text-decoration: none;

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<data>
+	<template id="zynthianstyle" name="Zynthian style" inherit_id="website.assets_frontend">
+	    <xpath expr="link[last()]" position="after">
+	        <link href="/theme_default/static/less/style.less" rel="stylesheet" type="text/less"/>
+	    </xpath>
+	</template>
+</data>

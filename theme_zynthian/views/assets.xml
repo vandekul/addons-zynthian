@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<template id="zynthian_style" name="Zynthian style" inherit_id="website.assets_frontend">
+		<xpath expr="//link[@href='/website/static/src/css/website.css']" position="after">
+			<link rel="stylesheet" href="/theme_zynthian/static/src/css/website_zynthian.css"/>
+		</xpath>
+		<xpath expr="//script[@src='/website/static/src/js/website.js']" position="after">
+			 <script type="text/javascript" src="/theme_zynthian/static/src/js/website_zynthian.js"></script>
+		</xpath>
+	</template>
+	<template id="zynthian_banner" name="Zynthian banner" inherit_id="website.layout">
+		<xpath expr="//main/t[@t-raw='0']" position="before">
+			<section class="jumbotron s_big_message oe_img_bg zynthian_alert_message" style="background-image: url(/website/static/src/img/banner/black.jpg);">
+				<div class="container">
+					<h2 style="color:#ffffff; font-size: 48px;">Delayed delivery!</h2>
+					<p style="color:#ffffff;"><b>Due to supply chain issues, we have a delivery time of 4-6 weeks for orders containing the ZynScreen v1.4 display.</b></p>
+				</div>
+			</section>
+		</xpath>
+	</template>
+</data>
+</openerp>

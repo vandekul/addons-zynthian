@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+   <template id="wizard_extend" inherit_id="website_sale.wizard_checkout" name="Wizard checkout">
+    <xpath expr="//li[@id='step20']" position="replace">
+        <li t-att-class="(step==20 and 'text-primary') or 'text-muted'" id="step20">
+          <t t-if="step&gt;20 and step&lt;50">
+            <a href="/shop/checkout" class="text-success">
+               Shipping Address<span class="chevron"/>
+            </a>
+          </t>
+          <t t-if="not (step&gt;20 and step&lt;50)">
+             Shipping Address<span class="chevron"/>
+          </t>
+        </li>
+    </xpath>
+</template>
+</data>

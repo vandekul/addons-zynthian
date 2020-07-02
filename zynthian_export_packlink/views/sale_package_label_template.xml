@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_package_label_document_a4">
+    <t t-call="report.html_container">
+        <div class="page">
+            <t t-foreach="docs" t-as="doc">
+            <style>
+            table, td, th {    
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                padding: 5px;
+            }
+            div.a {
+                line-height: 0.5;
+            }
+
+            </style>
+               <table>
+                <tr>
+                    <td>
+                        <h3>
+                        <strong>TO:</strong>
+                        <div t-field="doc.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                        </h3>
+                    </td>
+                    <td>
+                        <h3>
+                        <strong>FROM:</strong>
+                        <div t-field="doc.company_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                        </h3>
+                    </td>
+                </tr>
+                </table>
+            </t>
+        </div>
+    </t>
+</template>
+
+<template id="report_package_label_document">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+        <div class="page">
+            <strong>TO:</strong>
+            <div t-field="doc.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+        </div>
+        
+        <div class="page">
+            <strong>FROM:</strong>
+            <div t-field="doc.company_id.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+        </div>
+
+        <div class="page">
+            <h6><small>
+                <table>
+                    <tr>
+                        <td>
+                            <p class="small"><strong t-field="doc.name"/></p>
+                        </td>
+                    </tr>
+                </table>
+
+              <t t-foreach="doc.order_line" t-as="order_line">
+                <t t-if="order_line.product_id.sale_ok">
+                <table>
+                    <tr>
+                        <td>
+                            <p class = "small" t-field="order_line.product_uom_qty"/>
+                        </td>
+                        <td>
+                            <p class = "small" t-field="order_line.product_id"/>
+                        </td>
+                    </tr>
+                </table>
+                </t>
+              </t>
+            </small></h6>
+        </div>
+        </t>
+    </t>
+</template>
+
+</odoo>
