@@ -57,6 +57,11 @@ class PaymentAcquirerStripe(models.Model):
              "brand or product. As defined in your Stripe profile. See: "
              "https://stripe.com/docs/checkout")
 
+    def _get_providers(self, cr, uid, context=None):
+        providers = super(PaymentAcquirerStripe, self)._get_providers(cr, uid, context=context)
+        providers.append(['stripe', 'Stripe'])
+        return providers
+
     def stripe_form_generate_values(self, cr, uid, id, values, context=None):
         base_url = self.pool['ir.config_parameter'].get_param(cr, uid, 'web.base.url')
         acquirer = self.browse(cr, uid, id, context=context)

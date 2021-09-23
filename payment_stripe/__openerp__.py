@@ -20,9 +20,7 @@
 #******************************************************************************
 
 {
-<<<<<<< HEAD
     'name': "Gateway Stripe",
-
     'summary': """This module integrates Stripe with Odoo v9.0""",
     'author': "Vandekul",
     'website': "https://github.com/vandekul",
@@ -32,7 +30,6 @@
     'price':'100',
     'application': True,
     'depends': ['base', 'payment'],
-=======
     'name': 'Paypal as a Friend Payment Acquirer',
     'author':'mumaker',
     'category': 'Accounting',
@@ -47,7 +44,6 @@
     """,
     'website': 'https://github.com/vandekul',
     'depends': ['payment', 'sale'],
->>>>>>> 30020cc9ff6ca4f67e679a3a1a53f72cd2d3edd5
     'data': [
         'views/payment_stripe_templates.xml',
         'views/stripe_configuration_view.xml',
