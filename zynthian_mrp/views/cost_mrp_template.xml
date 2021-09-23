@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_mrpbomstructure">
+    <t t-call="report.html_container">
+        <t t-call="report.internal_layout">
+            <div class="page">
+                <h2>BOM Structure</h2>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>BOM Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="o">
+                            <tr style="font-weight: bold;">
+                                <td>
+                                    <span t-field="o.product_id.default_code"/>
+                                    <span t-field="o.display_name"/>
+                                </td>
+                                <td>
+                                    <span t-field="o.product_qty"/>
+                                    <span groups="product.group_uom" t-field="o.product_uom.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="o.code"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="o.bom_line_ids.product_id" t-as="l">
+                                <td style="padding-left: 20px;">
+                                    <span style="color: white;" t-esc="'... '*(product.level)"/>
+                                    <span t-esc="l.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="formatLang(l['qty'])"/>
+                                    <span t-esc="l.name" groups="product.group_uom"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.standard_cost"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>
