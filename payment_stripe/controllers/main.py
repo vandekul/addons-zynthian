@@ -19,6 +19,7 @@ class StripeController(http.Controller):
     def stripe_s2s_create_json(self, **kwargs):
         acquirer_id = int(kwargs.get('acquirer_id'))
         acquirer = request.env['payment.acquirer'].browse(acquirer_id)
+        _logger.info('STRIPE_CONTROLLER: stripe_s2s_create_json')
         return acquirer.s2s_process(kwargs)
 
     @http.route(['/payment/stripe/s2s/create'], type='http', auth='public')
@@ -26,7 +27,8 @@ class StripeController(http.Controller):
         acquirer_id = int(post.get('acquirer_id'))
         acquirer = request.env['payment.acquirer'].browse(acquirer_id)
         acquirer.s2s_process(post)
-        return werkzeug.utils.redirect(post.get('return_url', '/'))
+        _logger.info('STRIPE_CONTROLLER: stripe_s2s_create %s', request.env['ir.config_parameter'].get_param('web.base.url'))
+        return werkzeug.utils.redirect(post.get('return_url', request.env['ir.config_parameter'].get_param('web.base.url')+'/confirmation'))
 
     @http.route(['/payment/stripe/create_charge'], type='json', auth='public')
     def stripe_create_charge(self, **post):
@@ -39,4 +41,4 @@ class StripeController(http.Controller):
         _logger.info('Stripe: entering form_feedback with post data %s', pprint.pformat(response))
         if response:
             request.env['payment.transaction'].sudo().with_context(lang=None).form_feedback(response, 'stripe')
-        return post.pop('return_url', '/')
+        return post.pop('return_url', request.env['ir.config_parameter'].get_param('web.base.url')+'/confirmation')

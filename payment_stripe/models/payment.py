@@ -81,12 +81,9 @@ class PaymentAcquirerStripe(models.Model):
             'name': values.get('partner_name'),
             'phone': values.get('partner_phone'),
         }
-        temp_stripe_tx_values['returndata'] = stripe_tx_values.pop('return_url', '')
+        temp_stripe_tx_values['returndata'] = stripe_tx_values.pop('return_url', '/')
         stripe_tx_values.update(temp_stripe_tx_values)
         return stripe_tx_values
-
-    def _get_stripe_api_url(self, cr, uid, environment, context=None):
-        return 'api.stripe.com/v1'
 
     def stripe_s2s_form_process(self, cr, uid, data, context=None):
         values = {
@@ -116,7 +113,7 @@ class PaymentTransactionStripe(models.Model):
     _inherit = 'payment.transaction'
 
     def _create_stripe_charge(self, acquirer_ref=None, tokenid=None, email=None):
-        api_url_charge = 'https://%s/charges' % (self.acquirer_id._get_stripe_api_url())
+        api_url_charge = 'https://api.stripe.com/v1/charges'
         charge_params = {
             'amount': int(self.amount if self.currency_id.name in INT_CURRENCIES else float_round(self.amount * 100, 2)),
             'currency': self.currency_id.name,
@@ -149,7 +146,7 @@ class PaymentTransactionStripe(models.Model):
     def _stripe_form_get_tx_from_data(self, cr, uid, data, context=None):
         """ Given a data dict coming from stripe, verify it and find the related
         transaction record. """
-        reference = data.get('reference')
+        reference =  data.get('metadata', {}).get('reference')
         if not reference:
             error_msg = _(
                 'Stripe: invalid reply received from provider, missing reference. Additional message: %s'

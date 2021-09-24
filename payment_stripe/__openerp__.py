@@ -30,12 +30,12 @@
     'price':'100',
     'application': True,
     'depends': ['base', 'payment'],
-    'name': 'Paypal as a Friend Payment Acquirer',
+    'name': 'Stripe Payment Acquirer',
     'author':'mumaker',
     'category': 'Accounting',
-    'summary': 'Payment Acquirer: Paypal as a Friend Implementation',
+    'summary': 'Payment Acquirer: Stripe Implementation',
     'version': '1.0',
-    'description': """Paypal as a Friend Payment Acquirer
+    'description': """Stripe Payment Acquirer
     201910
     It includes changing status in transaction payment when quotation is confirm/cancell/draft manually.
     This changing will afect wire transfer and paypal as a friend payment acquirer and they need to select
