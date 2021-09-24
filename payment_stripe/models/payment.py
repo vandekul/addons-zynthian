@@ -19,11 +19,12 @@
 # For a full copy of the GNU General Public License see the LICENSE.txt file.
 # 
 #******************************************************************************
-from openerp import api, fields, models, _
+from openerp import api, models, _
 from openerp.addons.payment.models.payment_acquirer import ValidationError
 from openerp.exceptions import UserError
 from openerp.tools.safe_eval import safe_eval
 from openerp.tools.float_utils import float_round
+from openerp.osv import fields
 
 import logging
 import pprint
@@ -48,32 +49,33 @@ INT_CURRENCIES = [
 class PaymentAcquirerStripe(models.Model):
     _inherit = 'payment.acquirer'
 
-    provider = fields.Selection(selection_add=[('stripe', 'Stripe')])
-    stripe_secret_key = fields.Char(required_if_provider='stripe', groups='base.group_user')
-    stripe_publishable_key = fields.Char(required_if_provider='stripe', groups='base.group_user')
-    stripe_image_url = fields.Char(
-        "Checkout Image URL", groups='base.group_user',
-        help="A relative or absolute URL pointing to a square image of your "
-             "brand or product. As defined in your Stripe profile. See: "
-             "https://stripe.com/docs/checkout")
-
     def _get_providers(self, cr, uid, context=None):
         providers = super(PaymentAcquirerStripe, self)._get_providers(cr, uid, context=context)
         providers.append(['stripe', 'Stripe'])
         return providers
+
+    _columns = {
+        'stripe_secret_key' : fields.char('Stripe Secret Key',required_if_provider='stripe', groups='base.group_user'),
+        'stripe_publishable_key' : fields.char('Stripe Publishable Key',required_if_provider='stripe', groups='base.group_user'),
+        'stripe_image_url' : fields.char("Checkout Image URL", 
+            groups='base.group_user',
+            help="A relative or absolute URL pointing to a square image of your "
+            "brand or product. As defined in your Stripe profile. See: "
+            "https://stripe.com/docs/checkout")
+    }
 
     def stripe_form_generate_values(self, cr, uid, id, values, context=None):
         base_url = self.pool['ir.config_parameter'].get_param(cr, uid, 'web.base.url')
         acquirer = self.browse(cr, uid, id, context=context)
         stripe_tx_values = dict(values)
         temp_stripe_tx_values = {
-            'company': self.company_id.name,
+            'company': 'Zynthian',#self.company_id[0].name,
             'amount': values['amount'],  # Mandatory
             'currency': values['currency'] and values['currency'].name or '',  # Mandatory anyway
             'currency_id': values['currency'] and values['currency'].id or '',  # same here
             'address_line1': values.get('partner_address'),  # Any info of the partner is not mandatory
             'address_city': values.get('partner_city'),
-            'address_country': values.get('partner_country') and tx_values.get('partner_country').name or '',
+            'address_country': values.get('partner_country') and values.get('partner_country').name or '',
             'email': values.get('partner_email'),
             'address_zip': values.get('partner_zip'),
             'name': values.get('partner_name'),
@@ -218,6 +220,7 @@ class PaymentMethod(models.Model):
 
     def stripe_create(self, cr, uid, values, context=None):
         res = {}
+        _logger.info("Stripe create!!!!")
         payment_acquirer = self.pool['payment.acquirer'].browse(cr, uid, values['acquirer_id'])
         url_token = 'https://%s/tokens' % payment_acquirer._get_stripe_api_url()
         url_customer = 'https://%s/customers' % payment_acquirer._get_stripe_api_url()
