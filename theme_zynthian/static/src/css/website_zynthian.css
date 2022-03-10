@@ -269,9 +269,9 @@ ul.wizard li.text-primary {
   display: block;
 }
 .form-control:focus {
-    border-color: rgba(192, 1, 39, 0.6);
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(192, 1, 39, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(192, 1, 39, 0.6);
+  border-color: rgba(192, 1, 39, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(192, 1, 39, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(192, 1, 39, 0.6);
 }
 .nav-pills.nav-stacked > li > a{
   background: #EDEDED;
@@ -282,8 +282,23 @@ ul.wizard li.text-primary {
   background: #000000;
   color: #FFFFFF;
 }
+
+@media only screen and (max-width: 768px) {
+  section.parallax {
+    height: 0px !important;
+  }
+  .img.padding-xl {
+    padding: 0px;
+  }
+}
+
+ul.mt16 {
+  margin-top: 0px !important;
+}
+
 .pagination{
-  margin-top: 30px;
+  display: none;
+  margin-top: 0px;
 }
 .pagination > li > a,
 .pagination > li > span {
@@ -328,8 +343,9 @@ footer .container.mt16.mb8 .text-muted{
 }
 footer .container.mt16.mb8 a{
   color: #FFFFFF;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 footer .container.mt16.mb8 a:hover{
   color: #C00127;
   text-decoration: none;
+}
